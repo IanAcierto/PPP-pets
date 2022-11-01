@@ -1,0 +1,18 @@
+Interacting with the database
+
+•Insert, delete, and update database rows 
+through Flask-SQLAlchemy.
+•Query database rows using Flask-
+SQLAlchemy.
+•Filter Flask-SQLAlchemy queries to 
+customize the response.
+
+create a data object using the relavant model, add the object to the database section, commit the addition to the database session
+
+inserting data, create data object - using the models class, you can call your table or whatever
+
+    e.g. if request.method == 'POST':
+      new_user = models.User(
+        username = {request.username}
+        password = {request.password}
+      )

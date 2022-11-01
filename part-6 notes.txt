@@ -1,0 +1,62 @@
+database integration with flask
+
+describe how to integrate an sql database into a flask application
+define a model with Flask-SQLAlchemy
+connect to a Postgres database using Flask-SQLAlchemy
+
+SQLAlchemy is an ORM
+
+install it as a package
+pip install Flask-SQLAlchemy
+
+there is a class called SQLAlchemy which will handle most of the fucntionality
+from flask_sqlalchemy import SQLAlchemy
+
+db = SQLAlchemy()
+make an instance of the class to access ORM functions
+
+
+
+connect to a database
+  need to configure connection before using ORM
+
+flask has a built in method for configuring a database
+
+
+    app.config['SQLALCHEMY_ATABASE_URI] = 'connection string'
+
+when we're connected to db we can initialize the app in the ORM
+db.init_app(app) <-- directly connecting database to application
+
+creating a model
+
+models are created as a class, they inherit the sqlAlchemy model base class which can be accessed through the instance
+
+
+    db = SQLAlchemy()
+
+    class ModelName(db.Model):
+      define table name:
+        __tablename__ = 'tablename'
+      define columns:
+      id = db.Column(db.Integer, primary_key=True)
+      column_name = db.Column(db.String(50))
+
+
+applying the changes
+
+Flask-Migrate, another package for migrating models
+
+from flask_migrate import flask_migrate
+
+app = Flask(__name__)
+db = SQLAlchemy()
+migrate = Migrate(app, db)<--configure migrate through the migrate class
+
+different migrate commands
+  flask db init_app: Init the app for migrations
+  flask db migrate: generate the migration files
+  flask db upgrade: apply the migration to the database
+
+We also have to install a Postgres database adapter, psycopg2-binary.
+This package will allow our Python application to work with Postgres.

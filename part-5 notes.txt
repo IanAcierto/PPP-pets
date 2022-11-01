@@ -1,0 +1,33 @@
+REQUESTS AND REDIRECTS
+desribe how request information is accessed through flask
+obtain user given data through the request object
+redirect fr4om one endpoint to another
+
+the request objects holds all necessary information about a request.
+  this is relavant for data given by the user
+
+the request object holds data given by user
+
+the request object is imported from flask
+contains built in methods and attributes that hold all neessary data about the request
+request object
+  method attribute request.method == 'POST'
+
+    e.g.  if request.method == 'POST':
+            #handle the post request here
+  form attribute {request.form['username']} <-- contains the username variable from a POST request
+
+    e.g.  if request.method == 'POST':
+            print(f'{request.form['username']}')
+
+redirects - after handling request object, we want to redirect afterwards
+  imported from flask
+
+      from flask import redirect
+
+  use the redirect method, accepts the url for redirection
+
+    
+    e.g.  if request.method == 'POST':
+            print(f'{request.form['username']}')
+            return redirect('/')
